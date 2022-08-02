@@ -1,0 +1,11 @@
+.search-bar-light {
+    background-color: white !important;
+    color: darkslategrey !important;
+}
+
+.search-bar-dark {
+    background-color: darkslategrey !important;
+    color: azure !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}

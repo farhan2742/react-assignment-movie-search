@@ -1,0 +1,10 @@
+.logo-img {
+    width: 50px;
+    padding: 10px;
+}
+
+.NavBar {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}

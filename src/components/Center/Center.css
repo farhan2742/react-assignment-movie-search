@@ -1,0 +1,14 @@
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.dark {
+    background-color: darkslategrey !important;
+    color: azure !important;
+}
+
+.light {
+    background-color: #1976d2 !important;
+    color: azure !important;
+}
