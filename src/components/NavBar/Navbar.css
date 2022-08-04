@@ -4,7 +4,7 @@
 }
 
 .NavBar {
-    display: flex;
-    align-items: center;
-    align-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }

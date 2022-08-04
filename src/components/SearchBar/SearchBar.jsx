@@ -2,20 +2,18 @@ import * as React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
-import SearchButton from "../SearchButton/SearchButton";
+import SearchButton, { VARIANTS } from "../SearchButton/SearchButton";
 import "./SearchBar.css";
 
-export default function SearchBar(props) {
-    const {
-        placeholder = "Search Movies",
-        width,
-        clickHandler,
-        searchValue,
-        setSearchValue,
-        mode = "light",
-        ...rest
-    } = props;
-
+const SearchBar = ({
+    placeholder = "Search Movies",
+    width,
+    clickHandler,
+    searchValue,
+    setSearchValue,
+    mode = "light",
+    ...rest
+}) => {
     const [SearchBarClass, setSearchBarClass] = React.useState("");
 
     React.useEffect(() => {
@@ -45,8 +43,7 @@ export default function SearchBar(props) {
                 {...rest}
             />
             <SearchButton
-                variant="contained"
-                icon={false}
+                variant={VARIANTS.contained}
                 clickHandler={clickHandler}
                 mode={mode}
             >
@@ -54,4 +51,6 @@ export default function SearchBar(props) {
             </SearchButton>
         </Paper>
     );
-}
+};
+
+export default SearchBar;

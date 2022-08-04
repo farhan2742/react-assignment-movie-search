@@ -1,0 +1,15 @@
+.movie-card {
+    width: 300px !important;
+    min-height: 341.19px !important;
+}
+
+.movie-card-media {
+    height: 250px !important;
+}
+
+.single-line {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: inherit;
+}

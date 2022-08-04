@@ -4,25 +4,29 @@ import React from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import SearchBar from "../SearchBar/SearchBar";
-import logo from "../../../public/logo192.png";
+import logo from "../../assets/logo/logo192.png";
 import "./Navbar.css";
 
-export default function NavBar(props) {
-    const { logoSrc = logo, mode = "light", ...rest } = props;
-
-    const [searchValue, setSearchValue] = React.useState("");
-
-    const clickHandler = () => {
+const NavBar = ({
+    logoSrc = logo,
+    mode = "light",
+    searchValue = "",
+    placeholder = "Search Movies",
+    setSearchValue = () => "Search Value changed",
+    ...rest
+}) => {
+    const clickHandler = (e) => {
+        e.preventDefault();
         console.log(searchValue);
     };
 
     return (
-        <div className={`NavBar`}>
+        <div>
             <AppBar position="static">
-                <Toolbar className={mode}>
+                <Toolbar className={`NavBar ${mode}`}>
                     <img src={logoSrc} alt="logo" className={`logo-img`} />
                     <SearchBar
-                        placeholder="Search Movies"
+                        placeholder={placeholder}
                         width={800}
                         searchValue={searchValue}
                         setSearchValue={setSearchValue}
@@ -34,4 +38,6 @@ export default function NavBar(props) {
             </AppBar>
         </div>
     );
-}
+};
+
+export default NavBar;

@@ -1,11 +1,11 @@
+import React from "react";
+
+import Dashboard from "./pages/Dashboard/Dashboard";
+
 import "./App.css";
 
 function App() {
-    return (
-        <div className="App">
-            <h1>Hello World</h1>
-        </div>
-    );
+    return <Dashboard mode="light" />;
 }
 
 export default App;

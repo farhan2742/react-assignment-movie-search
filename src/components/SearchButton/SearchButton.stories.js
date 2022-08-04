@@ -2,13 +2,16 @@
 
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import SearchButton from "./SearchButton";
+import SearchButton, { VARIANTS } from "./SearchButton";
 
 export default {
     title: "Search Button",
     component: SearchButton,
     argTypes: {
-        variant: { control: "select", options: ["outlined", "contained"] },
+        variant: {
+            control: "select",
+            options: [VARIANTS.contained, VARIANTS.outline],
+        },
         color: {
             control: "select",
             options: ["primary", "secondary", "success", "error"],

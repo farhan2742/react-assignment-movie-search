@@ -3,15 +3,19 @@ import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 import "./SearchButton.css";
 
-export default function SearchButton(props) {
-    const {
-        variant = "contained",
-        children,
-        icon = true,
-        clickHandler,
-        mode = "light",
-        ...rest
-    } = props;
+export const VARIANTS = {
+    outline: "outline",
+    contained: "contained",
+};
+
+const SearchButton = ({
+    variant = VARIANTS.contained,
+    children,
+    icon = false,
+    clickHandler,
+    mode = "light",
+    ...rest
+}) => {
     return (
         <Button
             variant={variant}
@@ -23,4 +27,6 @@ export default function SearchButton(props) {
             {children}
         </Button>
     );
-}
+};
+
+export default SearchButton;
