@@ -1,6 +1,6 @@
 // A Material UI Modal that displays movie data
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Modal from "@mui/material/Modal";
 import Stack from "@mui/material/Stack";
 
