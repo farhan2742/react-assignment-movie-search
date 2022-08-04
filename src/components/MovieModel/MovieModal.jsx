@@ -7,7 +7,7 @@ import Stack from "@mui/material/Stack";
 const MovieModal = ({ movie, open, setOpen, mode = "light", ...rest }) => {
     useEffect(() => {
         setOpen(open);
-    }, [open]);
+    }, [open, setOpen]);
 
     const handleClose = () => {
         setOpen(false);

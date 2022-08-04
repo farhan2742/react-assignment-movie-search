@@ -19,16 +19,14 @@ const Dashboard = ({ mode = "light" }) => {
                 "https://api.themoviedb.org/3/movie/top_rated?api_key=802f00acb087ce523bcf2b9baa7a693a&language=en-US&page=1"
             )
             .then(function (response) {
-                setMovies((prev) => {
+                setMovies(() => {
                     return {
-                        ...prev,
                         movies: response.data.results,
                     };
                 });
             })
             .then(() => {
                 setLoading(false);
-                console.log(movies);
             })
             .catch(function (error) {
                 // handle error
@@ -56,7 +54,7 @@ const Dashboard = ({ mode = "light" }) => {
                 // handle error
                 console.log(error);
             });
-    }, [searchValue]);
+    }, [searchValue, movies]);
 
     return loading ? (
         <Progress />
