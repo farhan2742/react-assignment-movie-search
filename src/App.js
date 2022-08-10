@@ -5,7 +5,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import "./App.css";
 
 function App() {
-    return <Dashboard mode="light" />;
+    return <Dashboard mode="dark" />;
 }
 
 export default App;

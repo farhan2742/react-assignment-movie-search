@@ -3,6 +3,7 @@
 import React, { useEffect } from "react";
 import Modal from "@mui/material/Modal";
 import Stack from "@mui/material/Stack";
+import "./MovieModal.css";
 
 const MovieModal = ({ movie, open, setOpen, mode = "light", ...rest }) => {
     useEffect(() => {
@@ -20,7 +21,7 @@ const MovieModal = ({ movie, open, setOpen, mode = "light", ...rest }) => {
             onClick={handleClose}
             className={`movie-modal ${mode}`}
         >
-            <Stack direction="row" spacing={2}>
+            <Stack direction={{ xs: "column", sm: "row" }} spacing={2}>
                 <div>
                     <img
                         src={`https://image.tmdb.org/t/p/w440_and_h660_face${movie.poster_path}`}

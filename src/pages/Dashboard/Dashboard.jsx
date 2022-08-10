@@ -12,18 +12,22 @@ const Dashboard = ({ mode = "light" }) => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
     const [searchValue, setSearchValue] = React.useState("");
+    const [page, setPage] = React.useState(1);
+    const [totalPages, setTotalPages] = React.useState(10);
+    const [URL, setURL] = React.useState(
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=802f00acb087ce523bcf2b9baa7a693a&language=en-US&page=${page}`
+    );
 
     useEffect(() => {
         axios
-            .get(
-                "https://api.themoviedb.org/3/movie/top_rated?api_key=802f00acb087ce523bcf2b9baa7a693a&language=en-US&page=1"
-            )
+            .get(URL)
             .then(function (response) {
                 setMovies(() => {
                     return {
                         movies: response.data.results,
                     };
                 });
+                setTotalPages(response.data.total_pages);
             })
             .then(() => {
                 setLoading(false);
@@ -35,26 +39,36 @@ const Dashboard = ({ mode = "light" }) => {
     }, []);
 
     useEffect(() => {
+        if (searchValue !== "") {
+            setURL(
+                `https://api.themoviedb.org/3/search/movie?api_key=802f00acb087ce523bcf2b9baa7a693a&language=en-US&query=${searchValue}&page=${page}`
+            );
+        } else {
+            setURL(
+                `https://api.themoviedb.org/3/movie/top_rated?api_key=802f00acb087ce523bcf2b9baa7a693a&language=en-US&page=${page}`
+            );
+        }
+    }, [searchValue, page]);
+
+    useEffect(() => {
         axios
-            .get(
-                `https://api.themoviedb.org/3/search/movie?api_key=802f00acb087ce523bcf2b9baa7a693a&language=en-US&query=${searchValue}&page=1&include_adult=false`
-            )
+            .get(URL)
             .then(function (response) {
                 setMovies(() => {
                     return {
                         movies: response.data.results,
                     };
                 });
+                setTotalPages(response.data.total_pages);
             })
             .then(() => {
                 setLoading(false);
-                console.log(movies);
             })
             .catch(function (error) {
                 // handle error
                 console.log(error);
             });
-    }, [searchValue, movies]);
+    }, [URL]);
 
     return loading ? (
         <Progress />
@@ -68,7 +82,13 @@ const Dashboard = ({ mode = "light" }) => {
                     setSearchValue={setSearchValue}
                     placeholder="Search for a movie"
                 />
-                <CardsGallary movies={movies} mode={mode} />
+                <CardsGallary
+                    movies={movies}
+                    mode={mode}
+                    page={page}
+                    setPage={setPage}
+                    totalPages={totalPages}
+                />
             </Container>
         </React.Fragment>
     );
