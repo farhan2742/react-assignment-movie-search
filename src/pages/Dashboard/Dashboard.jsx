@@ -19,26 +19,6 @@ const Dashboard = ({ mode = "light" }) => {
     );
 
     useEffect(() => {
-        axios
-            .get(URL)
-            .then(function (response) {
-                setMovies(() => {
-                    return {
-                        movies: response.data.results,
-                    };
-                });
-                setTotalPages(response.data.total_pages);
-            })
-            .then(() => {
-                setLoading(false);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            });
-    }, []);
-
-    useEffect(() => {
         if (searchValue !== "") {
             setURL(
                 `https://api.themoviedb.org/3/search/movie?api_key=802f00acb087ce523bcf2b9baa7a693a&language=en-US&query=${searchValue}&page=${page}`

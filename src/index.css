@@ -12,12 +12,3 @@ code {
         monospace;
 }
 
-.dark {
-    background-color: darkslategrey;
-    color: azure;
-}
-
-.light {
-    background-color: #1976d2;
-    color: darkslategrey;
-}
