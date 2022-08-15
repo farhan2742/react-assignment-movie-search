@@ -42,36 +42,3 @@ export const moviesReducer = (state = initialState, action) => {
             return state;
     }
 };
-
-// import { LOAD_MORE, LOAD_NEW, MOVIES_LOADING } from "../actions/types";
-
-// const initialState = {
-//     movies: [],
-//     url: "",
-//     loading: true,
-//     error: "",
-// };
-
-// export const moviesReducer = (state = initialState, action) => {
-//     switch (action.type) {
-//         case LOAD_MORE:
-//             return {
-//                 ...state,
-//                 movies: [...state.movies, ...action.payload],
-//                 loading: false,
-//             };
-//         case LOAD_NEW:
-//             return {
-//                 ...state,
-//                 movies: [...action.payload],
-//                 loading: false,
-//             };
-//         case MOVIES_LOADING:
-//             return {
-//                 ...state,
-//                 loading: true,
-//             };
-//         default:
-//             return state;
-//     }
-// };

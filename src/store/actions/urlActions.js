@@ -2,9 +2,7 @@
 
 import { SET_URL } from "./types";
 
-export const urlSet = (url) => {
-    return {
-        type: SET_URL,
-        payload: url,
-    };
-};
+export const urlSet = (url) => ({
+    type: SET_URL,
+    payload: url,
+});

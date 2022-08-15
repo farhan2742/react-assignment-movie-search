@@ -10,52 +10,42 @@ import {
 
 // action to load new movies from url
 
-export const moviesLoadNew = (url) => {
-    return (dispatch) => {
-        dispatch(moviesLoading());
-        axios
-            .get(url)
-            .then((response) => {
-                dispatch(setTotalPages(response.data.total_pages));
-                dispatch(moviesLoadSuccess(response.data.results));
-            })
-            .catch((error) => {
-                dispatch(moviesLoadFailure(error.message));
-            });
-    };
+export const moviesLoadNew = (url) => (dispatch) => {
+    dispatch(moviesLoading());
+    axios
+        .get(url)
+        .then((response) => {
+            dispatch(setTotalPages(response.data.total_pages));
+            dispatch(moviesLoadSuccess(response.data.results));
+        })
+        .catch((error) => {
+            dispatch(moviesLoadFailure(error.message));
+        });
 };
 
 // action to set loading state
 
-export const moviesLoading = () => {
-    return {
-        type: FETCH_MOVIES_REQUEST,
-    };
-};
+export const moviesLoading = () => ({
+    type: FETCH_MOVIES_REQUEST,
+});
 
 // action to set error message
 
-export const moviesLoadFailure = (error) => {
-    return {
-        type: FETCH_MOVIES_FAILURE,
-        payload: error,
-    };
-};
+export const moviesLoadFailure = (error) => ({
+    type: FETCH_MOVIES_FAILURE,
+    payload: error,
+});
 
 // action to set new movies
 
-export const moviesLoadSuccess = (movies) => {
-    return {
-        type: FETCH_MOVIES_SUCCESS,
-        payload: movies,
-    };
-};
+export const moviesLoadSuccess = (movies) => ({
+    type: FETCH_MOVIES_SUCCESS,
+    payload: movies,
+});
 
 // action to set total pages
 
-export const setTotalPages = (totalPages) => {
-    return {
-        type: SET_TOTAL_PAGES,
-        payload: totalPages,
-    };
-};
+export const setTotalPages = (totalPages) => ({
+    type: SET_TOTAL_PAGES,
+    payload: totalPages,
+});
