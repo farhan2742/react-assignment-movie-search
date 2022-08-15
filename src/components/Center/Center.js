@@ -1,6 +1,18 @@
 import React from "react";
 import "./Center.css";
+import propTypes from "prop-types";
+import defaultProps from "default-props";
 
-export default function Center(props) {
-    return <div className="center">{props.children}</div>;
-}
+const Center = ({ children }) => <div className="center">{children}</div>;
+
+Center.propTypes = {
+    children: propTypes.node.isRequired,
+};
+
+Center.defaultProps = defaultProps;
+
+Center.defaultProps = {
+    children: null,
+};
+
+export default Center;

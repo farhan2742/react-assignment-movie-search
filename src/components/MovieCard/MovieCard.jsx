@@ -1,18 +1,17 @@
 // Material UI Card that displays movie data
 
-import React from "react";
+import React, { useEffect, useState } from "react";
+import propTypes from "prop-types";
+import defaultProps from "default-props";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { useEffect } from "react";
-import { useState } from "react";
-
 import MovieModal from "../MovieModel/MovieModal";
 import "./MovieCard.css";
 
-const MovieCard = ({ movie, mode = "light", ...rest }) => {
+const MovieCard = ({ movie, mode, ...rest }) => {
     const [image, setImage] = useState("");
     const [modalOpen, setModalOpen] = useState(false);
     useEffect(() => {
@@ -62,6 +61,18 @@ const MovieCard = ({ movie, mode = "light", ...rest }) => {
             </Card>
         </>
     );
+};
+
+MovieCard.defaultProps = defaultProps;
+
+MovieCard.propTypes = {
+    movie: propTypes.object.isRequired,
+    mode: propTypes.string.isRequired,
+};
+
+MovieCard.defaultProps = {
+    movie: {},
+    mode: "light",
 };
 
 export default MovieCard;

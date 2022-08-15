@@ -4,9 +4,9 @@ import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import SearchButton, { VARIANTS } from "../SearchButton/SearchButton";
 import "./SearchBar.css";
-
 import { connect } from "react-redux";
-
+import propTypes from "prop-types";
+import defaultProps from "default-props";
 import {
     moviesLoadNew,
     moviesLoadFailure,
@@ -15,14 +15,14 @@ import {
 } from "../../store/actions";
 
 const SearchBar = ({
-    placeholder = "Search Movies",
+    placeholder,
     width,
     url,
     setURL,
     loadNew,
     setLoading,
     error,
-    mode = "light",
+    mode,
     ...rest
 }) => {
     const [SearchBarClass, setSearchBarClass] = useState("");
@@ -83,6 +83,27 @@ const SearchBar = ({
     );
 };
 
+SearchBar.propTypes = {
+    placeholder: propTypes.string,
+    width: propTypes.string,
+    url: propTypes.string,
+    setURL: propTypes.func.isRequired,
+    loadNew: propTypes.func.isRequired,
+    setLoading: propTypes.func.isRequired,
+    error: propTypes.string,
+    mode: propTypes.string,
+};
+
+SearchBar.defaultProps = defaultProps;
+
+SearchBar.defaultProps = {
+    placeholder: "Search Movies",
+    width: "100%",
+    url: "https://api.themoviedb.org/3/movie/top_rated?api_key=802f00acb087ce523bcf2b9baa7a693a&language=en-US",
+    error: "",
+    mode: "light",
+};
+
 const mapStateToProps = (state) => {
     return {
         url: state.url.url,
@@ -100,5 +121,3 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
-
-//export default SearchBar;

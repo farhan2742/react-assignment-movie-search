@@ -4,8 +4,10 @@ import React, { useEffect } from "react";
 import Modal from "@mui/material/Modal";
 import Stack from "@mui/material/Stack";
 import "./MovieModal.css";
+import propTypes from "prop-types";
+import defaultProps from "default-props";
 
-const MovieModal = ({ movie, open, setOpen, mode = "light", ...rest }) => {
+const MovieModal = ({ movie, open, setOpen, mode, ...rest }) => {
     useEffect(() => {
         setOpen(open);
     }, [open, setOpen]);
@@ -46,6 +48,22 @@ const MovieModal = ({ movie, open, setOpen, mode = "light", ...rest }) => {
             </Stack>
         </Modal>
     );
+};
+
+MovieModal.defaultProps = defaultProps;
+
+MovieModal.propTypes = {
+    movie: propTypes.object.isRequired,
+    open: propTypes.bool.isRequired,
+    setOpen: propTypes.func.isRequired,
+    mode: propTypes.string.isRequired,
+};
+
+MovieModal.defaultProps = {
+    movie: {},
+    open: false,
+    setOpen: () => {},
+    mode: "light",
 };
 
 export default MovieModal;

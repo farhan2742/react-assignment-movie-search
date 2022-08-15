@@ -6,13 +6,15 @@ import Toolbar from "@mui/material/Toolbar";
 import SearchBar from "../SearchBar/SearchBar";
 import logo from "../../assets/logo/logo192.png";
 import "./Navbar.css";
+import propTypes from "prop-types";
+import defaultProps from "default-props";
 
 const NavBar = ({
-    logoSrc = logo,
-    mode = "light",
-    searchValue = "",
-    placeholder = "Search Movies",
-    setSearchValue = () => "Search Value changed",
+    logoSrc,
+    mode,
+    searchValue,
+    placeholder,
+    setSearchValue,
     ...rest
 }) => {
     return (
@@ -30,6 +32,24 @@ const NavBar = ({
             </AppBar>
         </div>
     );
+};
+
+NavBar.propTypes = {
+    logoSrc: propTypes.string,
+    mode: propTypes.string,
+    searchValue: propTypes.string,
+    placeholder: propTypes.string,
+    setSearchValue: propTypes.func,
+};
+
+NavBar.defaultProps = defaultProps;
+
+NavBar.defaultProps = {
+    logoSrc: logo,
+    mode: "light",
+    searchValue: "",
+    placeholder: "Search Movies",
+    setSearchValue: () => "Search Value changed",
 };
 
 export default NavBar;

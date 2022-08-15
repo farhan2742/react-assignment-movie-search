@@ -1,11 +1,7 @@
-.logo-img {
-    width: 50px;
-    padding: 10px;
-}
-
-.NavBar {
+.footer {
+    height: 50px;
+    width: 100vw;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 100vw;
 }

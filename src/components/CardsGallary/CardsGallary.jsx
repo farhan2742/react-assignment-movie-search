@@ -4,6 +4,8 @@ import Pagination from "@mui/material/Pagination";
 import MovieCard from "../MovieCard/MovieCard";
 import { connect } from "react-redux";
 import Progress from "../Progress/Progress";
+import propTypes from "prop-types";
+import defaultProps from "default-props";
 
 import {
     moviesLoadNew,
@@ -61,6 +63,30 @@ const CardsGallary = ({
             </Grid>
         </Grid>
     );
+};
+
+CardsGallary.propTypes = {
+    movies: propTypes.array.isRequired,
+    mode: propTypes.string.isRequired,
+    spacing: propTypes.number.isRequired,
+    totalPages: propTypes.number.isRequired,
+    url: propTypes.string.isRequired,
+    loadNew: propTypes.func.isRequired,
+    loading: propTypes.bool.isRequired,
+    setLoading: propTypes.func.isRequired,
+};
+
+CardsGallary.defaultProps = defaultProps;
+
+CardsGallary.defaultProps = {
+    movies: [],
+    mode: "light",
+    spacing: 2,
+    totalPages: 10,
+    url: "",
+    loadNew: () => {},
+    loading: false,
+    setLoading: () => {},
 };
 
 const mapStateToProps = (state) => {
