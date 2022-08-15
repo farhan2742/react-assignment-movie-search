@@ -6,12 +6,13 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import propTypes from "prop-types";
 import defaultProps from "default-props";
+import "./Dashboard.css";
 
 const Dashboard = ({ mode }) => {
     return (
         <React.Fragment>
             <CssBaseline />
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" className="dashboard">
                 <NavBar mode={mode} placeholder="Search for a movie" />
                 <CardsGallary mode={mode} />
                 <Footer mode={mode} />
