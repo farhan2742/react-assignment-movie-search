@@ -7,7 +7,7 @@ import "./MovieModal.css";
 import propTypes from "prop-types";
 import defaultProps from "default-props";
 
-const MovieModal = ({ movie, open, setOpen, mode, ...rest }) => {
+const MovieModal = ({ movie, open, setOpen, mode }) => {
     useEffect(() => {
         setOpen(open);
     }, [open, setOpen]);
@@ -53,10 +53,10 @@ const MovieModal = ({ movie, open, setOpen, mode, ...rest }) => {
 MovieModal.defaultProps = defaultProps;
 
 MovieModal.propTypes = {
-    movie: propTypes.object.isRequired,
-    open: propTypes.bool.isRequired,
-    setOpen: propTypes.func.isRequired,
-    mode: propTypes.string.isRequired,
+    movie: propTypes.object,
+    open: propTypes.bool,
+    setOpen: propTypes.func,
+    mode: propTypes.string,
 };
 
 MovieModal.defaultProps = {

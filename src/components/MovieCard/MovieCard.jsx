@@ -66,8 +66,8 @@ const MovieCard = ({ movie, mode, ...rest }) => {
 MovieCard.defaultProps = defaultProps;
 
 MovieCard.propTypes = {
-    movie: propTypes.object.isRequired,
-    mode: propTypes.string.isRequired,
+    movie: propTypes.object,
+    mode: propTypes.string,
 };
 
 MovieCard.defaultProps = {

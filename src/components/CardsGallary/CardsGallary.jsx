@@ -14,10 +14,10 @@ import {
 } from "../../store/actions";
 
 const CardsGallary = ({
-    movies = [],
-    mode = "light",
-    spacing = 2,
-    totalPages = 10,
+    movies,
+    mode,
+    spacing,
+    totalPages,
     url,
     loadNew,
     loading,
@@ -66,14 +66,14 @@ const CardsGallary = ({
 };
 
 CardsGallary.propTypes = {
-    movies: propTypes.array.isRequired,
-    mode: propTypes.string.isRequired,
-    spacing: propTypes.number.isRequired,
-    totalPages: propTypes.number.isRequired,
-    url: propTypes.string.isRequired,
-    loadNew: propTypes.func.isRequired,
-    loading: propTypes.bool.isRequired,
-    setLoading: propTypes.func.isRequired,
+    movies: propTypes.array,
+    mode: propTypes.string,
+    spacing: propTypes.number,
+    totalPages: propTypes.number,
+    url: propTypes.string,
+    loadNew: propTypes.func,
+    loading: propTypes.bool,
+    setLoading: propTypes.func,
 };
 
 CardsGallary.defaultProps = defaultProps;

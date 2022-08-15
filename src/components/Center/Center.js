@@ -6,7 +6,7 @@ import defaultProps from "default-props";
 const Center = ({ children }) => <div className="center">{children}</div>;
 
 Center.propTypes = {
-    children: propTypes.node.isRequired,
+    children: propTypes.node,
 };
 
 Center.defaultProps = defaultProps;
