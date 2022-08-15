@@ -6,3 +6,5 @@ export {
 } from "./moviesLoadActions";
 
 export { urlSet } from "./urlActions";
+
+export { changeMode } from "./modeActions";

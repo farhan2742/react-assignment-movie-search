@@ -96,6 +96,7 @@ const mapStateToProps = (state) => {
         error: state.movies.error,
         totalPages: state.movies.totalPages,
         url: state.url.url,
+        mode: state.mode,
     };
 };
 

@@ -6,6 +6,7 @@ import Link from "@mui/material/Link";
 import "./Footer.css";
 import propTypes from "prop-types";
 import defaultProps from "default-props";
+import { connect } from "react-redux";
 
 // Definition Statements
 
@@ -35,4 +36,10 @@ Footer.defaultProps = {
     mode: "light",
 };
 
-export default Footer;
+const mapStateToProps = (state) => {
+    return {
+        mode: state.mode,
+    };
+};
+
+export default connect(mapStateToProps)(Footer);

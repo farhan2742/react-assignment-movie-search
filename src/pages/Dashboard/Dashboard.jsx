@@ -13,9 +13,9 @@ const Dashboard = ({ mode }) => {
         <React.Fragment>
             <CssBaseline />
             <Container maxWidth="xl" className="dashboard">
-                <NavBar mode={mode} placeholder="Search for a movie" />
-                <CardsGallary mode={mode} />
-                <Footer mode={mode} />
+                <NavBar placeholder="Search for a movie" />
+                <CardsGallary />
+                <Footer />
             </Container>
         </React.Fragment>
     );
