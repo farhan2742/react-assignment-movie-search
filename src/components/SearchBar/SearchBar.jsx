@@ -1,26 +1,56 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
 import SearchButton, { VARIANTS } from "../SearchButton/SearchButton";
 import "./SearchBar.css";
 
+import { connect } from "react-redux";
+
+import {
+    moviesLoadNew,
+    moviesLoadFailure,
+    urlSet,
+    moviesLoading,
+} from "../../store/actions";
+
 const SearchBar = ({
     placeholder = "Search Movies",
     width,
-    clickHandler,
-    searchValue,
-    setSearchValue,
+    url,
+    setURL,
+    loadNew,
+    setLoading,
+    error,
     mode = "light",
     ...rest
 }) => {
-    const [SearchBarClass, setSearchBarClass] = React.useState("");
+    const [SearchBarClass, setSearchBarClass] = useState("");
+    const [searchValue, setSearchValue] = useState("");
 
-    React.useEffect(() => {
+    useEffect(() => {
         mode === "light"
             ? setSearchBarClass("search-bar-light")
             : setSearchBarClass("search-bar-dark");
     }, [mode]);
+
+    useEffect(() => {
+        if (searchValue !== "") {
+            setURL(
+                `https://api.themoviedb.org/3/search/movie?api_key=802f00acb087ce523bcf2b9baa7a693a&language=en-US&query=${searchValue}`
+            );
+        } else {
+            setURL(
+                `https://api.themoviedb.org/3/movie/top_rated?api_key=802f00acb087ce523bcf2b9baa7a693a&language=en-US`
+            );
+        }
+    }, [searchValue, setURL]);
+
+    const clickHandler = (e) => {
+        e.preventDefault();
+        setLoading();
+        loadNew(`${url}&page=1`);
+    };
 
     return (
         <Paper
@@ -53,4 +83,22 @@ const SearchBar = ({
     );
 };
 
-export default SearchBar;
+const mapStateToProps = (state) => {
+    return {
+        url: state.url.url,
+        error: state.url.error,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        loadNew: (url) => dispatch(moviesLoadNew(url)),
+        loadFailure: (error) => dispatch(moviesLoadFailure(error)),
+        setURL: (url, page) => dispatch(urlSet(url, page)),
+        setLoading: () => dispatch(moviesLoading()),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+
+//export default SearchBar;

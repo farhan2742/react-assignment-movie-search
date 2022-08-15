@@ -15,11 +15,6 @@ const NavBar = ({
     setSearchValue = () => "Search Value changed",
     ...rest
 }) => {
-    const clickHandler = (e) => {
-        e.preventDefault();
-        console.log(searchValue);
-    };
-
     return (
         <div>
             <AppBar position="static">
@@ -28,9 +23,6 @@ const NavBar = ({
                     <SearchBar
                         placeholder={placeholder}
                         width={800}
-                        searchValue={searchValue}
-                        setSearchValue={setSearchValue}
-                        clickHandler={clickHandler}
                         mode={mode}
                         {...rest}
                     />
